@@ -1,0 +1,140 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@RenderSection("css", required: false)
+<body class="page-header-fixed">
+    <!-- BEGIN HEADER -->
+    <div class="header navbar navbar-inverse navbar-fixed-top">
+        <!-- BEGIN TOP NAVIGATION BAR -->
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <!-- BEGIN LOGO -->
+                <a class="brand" href='@Url.Action("Index", "Home")'>
+                    管理者
+                </a>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                    <img src="~/image/menu-toggler.png" alt="" />
+                </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <ul class="nav pull-right">
+                    @Html.Action("Navigation", "Home")
+                </ul>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- END TOP NAVIGATION BAR -->
+    </div>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid">
+        @Html.Action("Sidebar", "Home")
+        <!-- BEGIN PAGE -->
+        <div class="page-content">
+            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <div id="portlet-config" class="modal hide">
+                <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button"></button>
+                    <h3>小部件设置</h3>
+                </div>
+                <div class="modal-body">
+                    <p>这是一个配置表</p>
+                </div>
+            </div>
+            <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+            <div class="container-fluid">
+                <!-- BEGIN PAGE HEADER-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <!-- BEGIN STYLE CUSTOMIZER -->
+                        <div class="color-panel hidden-phone">
+                            <div class="color-mode-icons icon-color"></div>
+                            <div class="color-mode-icons icon-color-close"></div>
+                            <div class="color-mode">
+                                <p>主题颜色</p>
+                                <ul class="inline">
+                                    <li class="color-black current color-default" data-style="default"></li>
+                                    <li class="color-blue" data-style="blue"></li>
+                                    <li class="color-brown" data-style="brown"></li>
+                                    <li class="color-purple" data-style="purple"></li>
+                                    <li class="color-grey" data-style="grey"></li>
+                                    <li class="color-white color-light" data-style="light"></li>
+                                </ul>
+                                <label>
+                                    <span>布局</span>
+                                    <select class="layout-option m-wrap small">
+                                        <option value="fluid" selected>流式布局</option>
+                                        <option value="boxed">盒子布局</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span>页眉</span>
+                                    <select class="header-option m-wrap small">
+                                        <option value="fixed" selected>固定</option>
+                                        <option value="default">默认</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span>边侧栏</span>
+                                    <select class="sidebar-option m-wrap small">
+                                        <option value="fixed">固定</option>
+                                        <option value="default" selected>默认</option>
+                                    </select>
+                                </label>
+                                <label>
+                                    <span>页脚</span>
+                                    <select class="footer-option m-wrap small">
+                                        <option value="fixed">固定</option>
+                                        <option value="default" selected>默认</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- END BEGIN STYLE CUSTOMIZER -->
+                        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                        <h3 class="page-title">
+                            @ViewBag.Title <small>@ViewBag.Subtitle</small>
+                        </h3>
+                        <ul class="breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                @Html.ActionLink("主页", "Index", "Home")
+                                <i class="icon-angle-right"></i>
+                            </li>
+                            <li><a href="#">@ViewBag.Title</a></li>
+                        </ul>
+                        <!-- END PAGE TITLE & BREADCRUMB-->
+                    </div>
+                </div>
+                <!-- END PAGE HEADER-->
+                <!-- BEGIN PAGE CONTENT-->
+                @RenderBody()
+                <!-- END PAGE CONTENT-->
+            </div>
+            <!-- END PAGE CONTAINER-->
+        </div>
+        <!-- BEGIN PAGE -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="footer-inner">
+            2014 &copy; 管理者
+        </div>
+        <div class="footer-tools">
+            <span class="go-top">
+                <i class="icon-angle-up"></i>
+            </span>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    @Scripts.Render("~/bundles/jquery")
+    <!--[if lt IE 9]>
+    <script src="~/js/excanvas.min.js"></script>
+    <script src="~/js/respond.min.js"></script>
+    <![endif]-->
+    @Scripts.Render("~/bundles/jqueryOther")
+    @RenderSection("scripts", required: false)
+</body>
